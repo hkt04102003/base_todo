@@ -4,9 +4,6 @@ const initState = {
     status: "All",
   },
   todoList: [
-    { id: 1, name: "Note 3", completed: false },
-    { id: 2, name: "Note 4", completed: false },
-    { id: 3, name: "Note 5", completed: false },
   ],
 };
 

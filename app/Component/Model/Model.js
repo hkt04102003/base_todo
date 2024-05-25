@@ -2,7 +2,7 @@ import "./model.css";
 import { useId, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToDo, editToDo } from "@/app/redux/actions";
-export default function Model({ initialMode, textInput,editText ,editId, onCancel }) {
+export default function Model({updateEditCheck,textInput,editText ,editId, onCancel }) {
   const [textModel, setTextModel] = useState(textInput);
   const dispatch = useDispatch()
   const id = useId()
@@ -24,8 +24,9 @@ export default function Model({ initialMode, textInput,editText ,editId, onCance
         dispatch(editToDo({
           id : editId,
           name : textModel,
-          completed : false,
+          completed : updateEditCheck,
         }))
+        console.log("update after update",updateEditCheck);
       default:
         break;
     }

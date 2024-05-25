@@ -20,10 +20,10 @@ export default function Home() {
   const toDoList = useSelector(toDoRemainingSelect);
   const [searchText, setSearchText] = useState("");
   const [checkToDoList, setCheckToDoList] = useState("All");
+  const [updateEditCheck, setUpdateEditCheck] = useState(false);
   const dispatch = useDispatch();
-  //console.log(toDoList);
   let props = {
-    initialMode,
+    updateEditCheck,
     textInput: edit ? textInput : "",
     editText,
     editId,
@@ -36,12 +36,13 @@ export default function Home() {
   const handleCancel = () => {
     setInitialMode(false);
   };
-  const handleEdit = (textEdit, id) => {
+  const handleEdit = (textEdit, id,complete) => {
     setInitialMode(true);
     setTextInput(textEdit);
     setEdit(true);
     setEditId(id);
     setEditText("toDoEdit");
+    setUpdateEditCheck(complete)
   };
   const handleDelete = (id) => {
     dispatch(deleteToDo(id));
@@ -58,6 +59,7 @@ export default function Home() {
   const handleComplete = (id)=>{
     dispatch(completeToDo(id));
   }
+  
   return (
     <>
       <div className={`${styles.container}`}>
@@ -113,7 +115,7 @@ export default function Home() {
                           width={"100%"}
                           height={"25"}
                           alt=""
-                          onClick={() => handleEdit(todo.name, todo.id)}
+                          onClick={() => handleEdit(todo.name, todo.id,todo.completed)}
                         />
                       </li>
                       <li>
