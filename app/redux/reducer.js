@@ -8,7 +8,6 @@ const initState = {
 };
 
 const rootReducer = (state = initState, action) => {
-  console.log(state, action);
   switch (action.type) {
     case "toDo/add":
       return {
@@ -26,7 +25,6 @@ const rootReducer = (state = initState, action) => {
         todoList: [...todoListUpdated],
       };
     case "toDo/edit":
-      console.log(action.payload);
       const copyToDoList = [...state.todoList];
       const newList = copyToDoList.map((todoList) =>
         todoList.id == action.payload.id

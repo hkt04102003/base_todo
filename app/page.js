@@ -53,7 +53,6 @@ export default function Home() {
   };
   const handleCheck = (e) => {
     setCheckToDoList(e.target.value);
-    console.log(e.target.value);
     dispatch(checkToDo(e.target.value));
   };
   const handleComplete = (id)=>{

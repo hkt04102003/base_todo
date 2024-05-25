@@ -26,7 +26,6 @@ export default function Model({updateEditCheck,textInput,editText ,editId, onCan
           name : textModel,
           completed : updateEditCheck,
         }))
-        console.log("update after update",updateEditCheck);
       default:
         break;
     }
